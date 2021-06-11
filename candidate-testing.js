@@ -12,7 +12,7 @@ let candidateAnswer="";
 
 let questions = [
   "Who was the first American woman in space? ",
-  "True or false: 5 kilometer === 5000 meters? ",
+  "True or false: 5 kilometer == 5000 meters? ",
   "(5 + 3)/2 * 10 = ? ", 
   "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", 
   'What is the minimum crew size for the ISS? '
@@ -40,19 +40,20 @@ function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
  let grade = 0;
- //grade = grade
+ 
  for(j=0; j < questions.length; j++) {
   if (candidateAnswers[j].toLowerCase() === correctAnswers[j].toLocaleLowerCase()) {
     grade++;
   }
  }
-
+ 
   console.log(`>>> Overall Grade: ${(grade) / questions.length * 100}% (${grade} of ${questions.length} responses correct) <<<`);
   if (grade >= 4){
     console.log(`>>> Status: PASS <<< `);
   } else {
       console.log(`>>> Status: FAILED <<<`);
     }
+  grade = grade / questions.length * 100;
   return grade;
 }
 
