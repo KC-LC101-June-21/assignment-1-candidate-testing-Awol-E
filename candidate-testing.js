@@ -31,35 +31,33 @@ function askQuestion() {
 
   for(let j=0; j < questions.length; j++) {
     candidateAnswers[j] = input.question(questions[j] + '\n' + "Your Answer: ");
-    //candidateAnswers[j] = input.question(questions[j])
-    //console.log("Your Answer: "+ candidateAnswers[j])
-    console.log("Correct Answer: "+ correctAnswers[j])
+    console.log("Correct Answer: " + correctAnswers[j])
     console.log("\n");  
   }
-  //console.log(candidateAnswers);
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
- 
+ let grade = 0;
+ //grade = grade
  for(j=0; j < questions.length; j++) {
-  if (candidateAnswers[j].toLowerCase() === correctAnswers[j].toLocaleLowerCase()) 
- {
-   let i = j + 1;
-    console.log("Your answer is Correct for question # " + i);
-  } else {
-    i = j + 1;
-    console.log("Your answer is Wrong for question # " + i);
+  if (candidateAnswers[j].toLowerCase() === correctAnswers[j].toLocaleLowerCase()) {
+    grade++;
   }
  }
-  let grade;
+
+  console.log(`>>> Overall Grade: ${(grade) / questions.length * 100}% (${grade} of ${questions.length} responses correct) <<<`);
+  if (grade >= 4){
+    console.log(`>>> Status: PASS <<< `);
+  } else {
+      console.log(`>>> Status: FAILED <<<`);
+    }
   return grade;
 }
 
 function runProgram() {
   askForName();
-  // TODO 1.1c: Ask for candidate's name //
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
